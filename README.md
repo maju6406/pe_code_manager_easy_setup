@@ -32,14 +32,16 @@ This module assumes gem, git, and Puppet Enterprise are already installed.
 
 Install this module by running this command on the master as root:
 
-`puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => '**GIT_REPO_URL**', git_management_system => '**GMS**'}"``
+`puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => 'GIT_REPO_URL', git_management_system => 'GMS'}"``
 
+Replace these values before running:
 * **GIT_REPO_URL**: set to git url of control repo (default: git@gitlab:puppet/control-repo.git)
 * **GMS**:  set to 'gitlab' or 'github' (default:'gitlab')
 
 ### Post-Install steps
 If successful, this module generates 2 files on the master:
-1. `/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub`
+
+1 `/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub`
 
 Paste the contents of file as a deploy key:
 
@@ -50,7 +52,7 @@ Github:
 https://**PATH_TO_CONTROL_REPO**/settings/keys
 (ex: https://github.com/puppetlabs/control-repo/settings/keys)
 
-2. `/etc/puppetlabs/puppetserver/.puppetlabs/webhook_url.txt`
+2 `/etc/puppetlabs/puppetserver/.puppetlabs/webhook_url.txt`
 
 Gitlab instructions:
 * Go to:
@@ -74,6 +76,8 @@ This modules assumes that you are running:
 * gem, git are already installed
 
 ## Release Notes/Contributors/Etc. **Optional**
+
+0.1.2 - Readme fix
 
 0.1.1 - Code cleanup, added readme and other docs
 
