@@ -1,5 +1,3 @@
-# pe_code_manager_easy_setup
-
 #### Table of Contents
 
 1. [Description](#description)
@@ -14,70 +12,69 @@
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
-
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+This module makes it easy to install code manager.
 
 ## Setup
 
 ### What pe_code_manager_easy_setup affects **OPTIONAL**
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+This module will:
+* create the appropriate RBAC users for code manager
+* configure the PE Master node group for code manager
+* generate the deployment key to be placed into github/gitlab
+* generate the webhook URL to placed into github/gitlab
 
-If there's more that they should know about, though, this is the place to mention:
+### Setup Requirements
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
+This module assumes gem, git, and Puppet Enterprise are already installed.
 
-### Setup Requirements **OPTIONAL**
+### Usage
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+Install this module by running this command on the master as root:
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+`puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => '**GIT_REPO_URL**', git_management_system => '**GMS**'}"``
 
-### Beginning with pe_code_manager_easy_setup
+* **GIT_REPO_URL**: set to git url of control repo (default: git@gitlab:puppet/control-repo.git)
+* **GMS**:  set to 'gitlab' or 'github' (default:'gitlab')
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+### Post-Install steps
+If successful, this module generates 2 files on the master:
+1. `/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub`
 
-## Usage
+Paste the contents of file as a deploy key:
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+Gitlab:
+http://**PATH_TO_CONTROL_REPO**/deploy_keys (ex: http://gitlab/puppet/control-repo/deploy_keys)
 
-## Reference
+Github:
+https://**PATH_TO_CONTROL_REPO**/settings/keys
+(ex: https://github.com/puppetlabs/control-repo/settings/keys)
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+2. `/etc/puppetlabs/puppetserver/.puppetlabs/webhook_url.txt`
+
+Gitlab instructions:
+* Go to:
+http://**PATH_TO_CONTROL_REPO**/hooks
+  * URL: URL from webhook_url.txt
+  * Trigger: Enable "Push events"
+  * SSL verification: Enable "Enable SSL verification"
+
+Github instructions:
+* Go to:
+https://**PATH_TO_CONTROL_REPO**/settings/hooks/new
+  * Payload URL: URL from webhook_url.txt
+  * Content type: "application/json"
+  * Which events would you like to trigger this webhook?:"Just the push event."
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+This modules assumes that you are running:
+* Puppet Enterprise 2015.3 or higher
+* Gitlab 8.5 or higher
+* gem, git are already installed
 
 ## Release Notes/Contributors/Etc. **Optional**
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+0.1.1 - Code cleanup, added readme and other docs
+
+0.1.0 - Initial Release
