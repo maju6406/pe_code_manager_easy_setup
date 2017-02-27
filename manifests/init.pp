@@ -47,10 +47,6 @@ class pe_code_manager_easy_setup (
       provider => puppet_gem,
     }
 
-    Node_group {
-      require => Package['puppetclassify'],
-    }
-
     node_group { 'PE Master':
       ensure               => present,
       environment          => 'production',
@@ -62,16 +58,17 @@ class pe_code_manager_easy_setup (
           'r10k_remote'                 => $r10k_remote_url,
           'r10k_private_key'            => '/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa' },
       },
+      require              => Package['puppetclassify'],
     }
 
     class { 'pe_code_manager_webhook::code_manager':
-      git_management_system => $git_management_system,
+      git_management_system            => $git_management_system,
       create_and_manage_git_deploy_key => false,
       manage_git_webhook               => false,
-      require => Node_group['PE Master'],
+      require                          => Node_group['PE Master'],
     }
 
-    chown_r { '/etc/puppetlabs/code/'':
+    chown_r { '/etc/puppetlabs/code/':
       want_user  => 'pe-puppet',
       want_group => 'pe-puppet',
       require    => Class['pe_code_manager_webhook::code_manager'],

@@ -30,9 +30,9 @@ This module assumes gem, git, and Puppet Enterprise are already installed.
 
 ### Usage
 
-Install this module by running this command on the master as root:
-
-`puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => 'GIT_REPO_URL', git_management_system => 'GMS'}"``
+Install this module by running these command on the master as root:
+`puppet module install beersy-pe_code_manager_easy_setup --version 0.1.2`
+`puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => 'GIT_REPO_URL', git_management_system => 'GMS'}"`
 
 Replace these values before running:
 * **GIT_REPO_URL**: set to git url of control repo (default: git@gitlab:puppet/control-repo.git)
@@ -76,6 +76,10 @@ This modules assumes that you are running:
 * gem, git are already installed
 
 ## Release Notes/Contributors/Etc. **Optional**
+
+0.1.4 - Removing unnecessary puppet_gem dependency
+
+0.1.3 - Typo fix
 
 0.1.2 - Readme fix
 
