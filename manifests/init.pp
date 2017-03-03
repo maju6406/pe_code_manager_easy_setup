@@ -40,6 +40,9 @@
 class pe_code_manager_easy_setup (
   $r10k_remote_url = 'git@gitlab:puppet/control-repo.git',
   $git_management_system = 'gitlab',
+  $gms_server_url = 'http://gitlab',
+  $gms_api_token = 'HkXboXkyKXQsWH9ZLAy9',
+  $control_repo_project_name = 'puppet/control-repo'
 ){
 
     package { 'puppetclassify':
@@ -61,14 +64,23 @@ class pe_code_manager_easy_setup (
       require              => Package['puppetclassify'],
     }
 
-    class { 'pe_code_manager_webhook::code_manager':
+    class { 'pe_code_manager_easy_setup::code_manager':
       git_management_system            => $git_management_system,
+      create_and_manage_git_deploy_key => true,
+      manage_git_webhook               => true,
+      gms_server_url                   => $git_management_system ? {
+                                            'gitlab' => $gms_server_url,
+                                            'github' => undef,
+                                            default  => undef,
+                                          },
+      gms_api_token                    => $gms_api_token,
+      control_repo_project_name        => $control_repo_project_name,
       require                          => Node_group['PE Master'],
     }
 
     chown_r { '/etc/puppetlabs/code/':
       want_user  => 'pe-puppet',
       want_group => 'pe-puppet',
-      require    => Class['pe_code_manager_webhook::code_manager'],
+      require    => Class['pe_code_manager_easy_setup::code_manager'],
     }
 }
