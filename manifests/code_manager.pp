@@ -159,8 +159,6 @@ class pe_code_manager_easy_setup::code_manager (
     content => $webhook_url,
   }
 
-  notify{"token: ${gms_api_token}, gms_server_url: ${gms_server_url} create_and_manage_git_deploy_key: ${create_and_manage_git_deploy_key} manage_git_webhook: ${manage_git_webhook} control_repo_project_name: ${control_repo_project_name}":}
-
   if !empty($gms_api_token) {
     if $create_and_manage_git_deploy_key {
       git_deploy_key { "add_deploy_key_to_puppet_control-${::fqdn}":
@@ -171,7 +169,7 @@ class pe_code_manager_easy_setup::code_manager (
         project_name => $control_repo_project_name,
         server_url   => $gms_server_url,
         provider     => $git_management_system,
-      }
+    }
 
     if $manage_git_webhook {
       git_webhook { "code_manager_post_receive_webhook-${::fqdn}" :
@@ -182,8 +180,8 @@ class pe_code_manager_easy_setup::code_manager (
         server_url         => $gms_server_url,
         provider           => $git_management_system,
         disable_ssl_verify => true,
-      }
+        }
     }
   }
- }
+  }
 }
