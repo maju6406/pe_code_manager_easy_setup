@@ -62,8 +62,8 @@ class pe_code_manager_easy_setup (
     }
 
     class { 'pe_code_manager_webhook::code_manager':
-      git_management_system            => $git_management_system,
-      require                          => Node_group['PE Master'],
+      git_management_system => $git_management_system,
+      require               => Node_group['PE Master'],
     }
 
     chown_r { '/etc/puppetlabs/code/':
