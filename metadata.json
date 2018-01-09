@@ -1,6 +1,6 @@
 {
   "name": "beersy-pe_code_manager_easy_setup",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "author": "beersy",
   "summary": "Sets up code manager",
   "license": "Apache-2.0",
@@ -8,11 +8,12 @@
   "project_page": "https://github.com/maju6406/pe_code_manager_easy_setup",
   "issues_url": "https://github.com/maju6406/pe_code_manager_easy_setup/issues",
   "dependencies": [
+    {"name":"npwalker-pe_code_manager_webhook","version_requirement":"2.0.1"},
     {"name":"geoffwilliams-chown_r","version_requirement":"0.2.0"},
     {"name":"WhatsARanjit-node_manager","version_requirement":"0.3.1"},
     {"name":"puppetlabs-stdlib","version_requirement":">= 4.1.0 < 5.0.0"},
     {"name":"pltraining-rbac","version_requirement":">= 0.0.5 < 0.0.6"},
-    {"name":"beersy-gms","version_requirement":"1.0.0"}
+    {"name":"abrader-gms","version_requirement":">= 1.0.2 < 2.0.0"}
   ],
   "data_provider": null,
   "operatingsystem_support": [
