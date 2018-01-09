@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/maju6406/pe_code_manager_easy_setup.svg?branch=master)](https://travis-ci.org/maju6406/pe_code_manager_easy_setup)  
+
 #### Table of Contents
 
 1. [Description](#description)
