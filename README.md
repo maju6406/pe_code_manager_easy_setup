@@ -28,9 +28,12 @@ Install this module by running these command on the master as root:
 `puppet module install beersy-pe_code_manager_easy_setup`  
 `puppet resource package puppetclassify ensure=present provider=puppet_gem`  
 `puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => 'GIT_REPO_URL', git_management_system => 'GMS'}"`  
+Run `puppet agent -t` **twice**
+
 Replace these values before running:
 * **GIT_REPO_URL**: set to git url of control repo (default: git@gitlab:puppet/control-repo.git)
 * **GMS**:  set to 'gitlab' or 'github' (default:'gitlab')
+
 
 ### Post-Install steps
 If successful, this module generates 2 files on the master:  
