@@ -41,10 +41,6 @@ class pe_code_manager_easy_setup (
   $r10k_remote_url = 'git@gitlab:puppet/control-repo.git',
   $git_management_system = 'gitlab',
 ){
-
-  notify {"remote url: ${r10k_remote_url}":}
-  notify {"vcs:        ${git_management_system}":}
-
     package { 'puppetclassify':
       ensure   => present,
       provider => puppet_gem,
