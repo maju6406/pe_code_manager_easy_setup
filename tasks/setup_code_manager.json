@@ -1,0 +1,15 @@
+{
+    "puppet_task_version": 1,
+    "supports_noop": false,
+    "description": "This task will configure code manager on the Puppet Master",
+    "parameters": {
+        "r10k_remote_url": {
+            "description": "git url of control repo (ex: git@gitlab:puppet/control-repo.git)",
+            "type": "String[1]"
+        },
+        "git_management_system": {
+            "description": "Your version control system",
+            "type": "Enum[github, gitlab]"
+        }
+    }
+}
