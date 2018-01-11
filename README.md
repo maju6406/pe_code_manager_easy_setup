@@ -20,7 +20,7 @@ Using the task is highly recommended if you are running PE 2017.3 or are using B
 Set `r10k_remote_url` to git url of control repo (default: git@gitlab:puppet/control-repo.git). Both ssh and https url's are accepted. Ex:  
 ![screenshot](https://github.com/maju6406/pe_code_manager_easy_setup/raw/master/img/screenshot.png)  
 If something goes wrong, check the /tmp/ez*.log's for more information. The task will fail if it is run on a node that is not a master.
-After you run the task, check the output for the public ssh key and webhook url. You will need to manually put them in your version control system. **NOTE**: The task can take a few minutes to run.
+After you run the task, check the output for the public ssh key and webhook url. You will need to manually put them in your version control system. **NOTE** The task can take a few minutes to run.
 ## Module Setup
 ### What pe_code_manager_easy_setup affects
 This module will:
@@ -37,7 +37,8 @@ Install this module by running these command on the master as root:
 `puppet module install beersy-pe_code_manager_easy_setup`  
 `puppet resource package puppetclassify ensure=present provider=puppet_gem`  
 `puppet apply -e "class { 'pe_code_manager_easy_setup': r10k_remote_url => 'GIT_REPO_URL', git_management_system => 'GMS'}"`  
-Run `puppet agent -t` **twice**
+Run the above `puppet apply` command again.
+Run `puppet agent -t`
 
 Replace these values before running:
 * **GIT_REPO_URL**: set to git url of control repo (default: git@gitlab:puppet/control-repo.git)
