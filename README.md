@@ -13,8 +13,13 @@
 1. [Development - Guide for contributing to the module](#development)
 
 ## Description
-This module makes it easy to install code manager.
-## Setup
+This module and task makes it easy to install code manager.
+## Task
+We highly recommend using the task. 
+![screenshot](img/screenshot.png)
+If something goes wrong, check the /tmp/ez*.log's for more information. The task will fail if it is run on a node that is not a master.
+After you run the task, check the output for the public ssh key and webhook url. You will need to manually put this in your version control system.
+## Module Setup
 ### What pe_code_manager_easy_setup affects
 This module will:
 * create the appropriate RBAC users for code manager
@@ -69,6 +74,8 @@ This modules assumes that you are running:
 * gem, git are already installed
 
 ## Release Notes/Contributors/Etc.
+2.0.0 - Added task
+1.0.1 - Changed to adhere to pdk standards. Added tests
 1.0.0 - Initial release
 0.1.4 - Removing unnecessary puppet_gem dependency  
 0.1.3 - Typo fix  
