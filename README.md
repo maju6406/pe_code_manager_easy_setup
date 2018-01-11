@@ -13,9 +13,11 @@
 1. [Development - Guide for contributing to the module](#development)
 
 ## Description
-This module and task makes it easy to install code manager.
+This module and task makes it easy to install code manager.  
 ## Task
-We highly recommend using the task. 
+Using the task is highly recommended if you are running PE 2017.3 or are using Bolt. It is much simpler than using the module.
+### Usage
+Set `r10k_remote_url` to git url of control repo (default: git@gitlab:puppet/control-repo.git). Both ssh and https url's are accepted. Ex:  
 ![screenshot](img/screenshot.png)
 If something goes wrong, check the /tmp/ez*.log's for more information. The task will fail if it is run on a node that is not a master.
 After you run the task, check the output for the public ssh key and webhook url. You will need to manually put this in your version control system.
