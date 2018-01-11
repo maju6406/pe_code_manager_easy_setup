@@ -80,6 +80,7 @@ This modules assumes that you are running:
 * gem, git are already installed
 
 ## Release Notes/Contributors/Etc.
+2.0.2 - Minor bug fixes and documentation updates.  
 2.0.1 - Fixed bug related to access token, and improved execution time.  
 2.0.0 - Added task  
 1.0.1 - Changed to adhere to pdk standards. Added tests  
