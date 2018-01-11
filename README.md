@@ -20,7 +20,7 @@ Using the task is highly recommended if you are running PE 2017.3 or are using B
 Set `r10k_remote_url` to git url of control repo (default: git@gitlab:puppet/control-repo.git). Both ssh and https url's are accepted. Ex:  
 ![screenshot](https://github.com/maju6406/pe_code_manager_easy_setup/raw/master/img/screenshot.png)  
 If something goes wrong, check the /tmp/ez*.log's for more information. The task will fail if it is run on a node that is not a master.
-After you run the task, check the output for the public ssh key and webhook url. You will need to manually put them in your version control system.
+After you run the task, check the output for the public ssh key and webhook url. You will need to manually put them in your version control system. **NOTE**: The task can take a few minutes to run.
 ## Module Setup
 ### What pe_code_manager_easy_setup affects
 This module will:
@@ -76,6 +76,7 @@ This modules assumes that you are running:
 * gem, git are already installed
 
 ## Release Notes/Contributors/Etc.
+2.0.1 - Fixed bug related to access token
 2.0.0 - Added task
 1.0.1 - Changed to adhere to pdk standards. Added tests
 1.0.0 - Initial release

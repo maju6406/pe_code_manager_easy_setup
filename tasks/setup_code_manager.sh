@@ -10,12 +10,12 @@ puppet apply /tmp/cm.pp &>/tmp/ez_puppet_apply1.log
 puppet apply /tmp/cm.pp &>/tmp/ez_puppet_apply2.log
 echo "Successfully applied changes to Puppet Master."
 puppet agent -t &>/tmp/ez_puppet_agent_run1.log
-puppet agent -t &>/tmp/ez_puppet_agent_run2.log
 echo "Successfully ran puppet on Puppet Master..."
 echo "Finished!"
 echo ""
 echo "Now, put this generated Public SSH Key in your version control system:"
 echo $(head -n 1 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub)
+echo ""
 echo "Also, put the appropriate webhook URL's in your version control system:"
 webhook_url=$(head -n 1 /etc/puppetlabs/puppetserver/.puppetlabs/webhook_url.txt)
 echo "github:" ${webhook_url}
