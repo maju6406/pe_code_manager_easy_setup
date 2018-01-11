@@ -18,9 +18,9 @@ This module and task makes it easy to install code manager.
 Using the task is highly recommended if you are running PE 2017.3 or are using Bolt. It is much simpler than using the module.
 ### Usage
 Set `r10k_remote_url` to git url of control repo (default: git@gitlab:puppet/control-repo.git). Both ssh and https url's are accepted. Ex:  
-![screenshot](img/screenshot.png)
+![screenshot](https://github.com/maju6406/pe_code_manager_easy_setup/raw/master/img/screenshot.png)  
 If something goes wrong, check the /tmp/ez*.log's for more information. The task will fail if it is run on a node that is not a master.
-After you run the task, check the output for the public ssh key and webhook url. You will need to manually put this in your version control system.
+After you run the task, check the output for the public ssh key and webhook url. You will need to manually put them in your version control system.
 ## Module Setup
 ### What pe_code_manager_easy_setup affects
 This module will:
