@@ -76,10 +76,10 @@ This modules assumes that you are running:
 * gem, git are already installed
 
 ## Release Notes/Contributors/Etc.
-2.0.1 - Fixed bug related to access token
-2.0.0 - Added task
-1.0.1 - Changed to adhere to pdk standards. Added tests
-1.0.0 - Initial release
+2.0.1 - Fixed bug related to access token, and improved execution time.  
+2.0.0 - Added task  
+1.0.1 - Changed to adhere to pdk standards. Added tests  
+1.0.0 - Initial release  
 0.1.4 - Removing unnecessary puppet_gem dependency  
 0.1.3 - Typo fix  
 0.1.2 - Readme fix  
