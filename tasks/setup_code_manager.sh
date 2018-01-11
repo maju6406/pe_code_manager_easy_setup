@@ -14,7 +14,7 @@ echo $puppet_command >/tmp/cm.pp
 puppet apply /tmp/cm.pp 2>&1 >/tmp/ez_puppet_apply.log
 #echo "Apply Exit code:$?" 
 echo "Running Puppet on Puppet Master..."
-puppet agent -t 2>&1> >/tmp/ez_puppet_agent_run1.log
+puppet agent -t 2>&1 >/tmp/ez_puppet_agent_run1.log
 #echo "Run1 Exit code:$?"
 puppet agent -t 2>&1 >/tmp/ez_puppet_agent_run2.log
 #echo "Run2 Exit code:$?"
