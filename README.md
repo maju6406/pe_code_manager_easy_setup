@@ -24,7 +24,25 @@ Set `r10k_remote_url` to git url of control repo (default: git@gitlab:puppet/con
 If something goes wrong, check the /tmp/ez\*.log's for more information. The task will fail if it is run on a node that is not a master.
 After you run the task, check the output for the public ssh key and webhook url. You will need to manually put them in your version control system.  
 **NOTE** The task can take a few minutes to run.
+
+You can also run the Puppet Task from the command line using:
+
+```
+puppet access login <pe_console_user>
+puppet task run pe_code_manager_easy_setup::setup_code_manager  r10k_remote_url=<repo>  -n <master_certname>
+```
+
+Or using bolt:
+
+```
+bolt task run pe_code_manager_easy_setup::setup_code_manager r10k_remote_url=<repo> --modulepath /etc/puppetlabs/code/environments/production/modules --nodes <master_certname>
+```
+
+Once the task has completed follow the [Post-Install Steps](https://github.com/maju6406/pe_code_manager_easy_setup#post-install-steps).
 ## Module Setup
+
+You can ignore these steps if you are using the task.
+
 ### What pe_code_manager_easy_setup affects
 This module will:
 * create the appropriate RBAC users for code manager
