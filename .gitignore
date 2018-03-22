@@ -1,5 +1,6 @@
 .*.sw[op]
 .metadata
+.DS_Store
 .yardoc
 .yardwarns
 *.iml
